@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF8"/>
+
+    <title>лапка</title>
+
+    <h:outputStylesheet library="stylesheets" name="normal.css"/>
+
+    <style type="text/css">
+        body > * {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <span class="menu"><h:link styleClass="hyperlink" value="перейти к котикам" outcome="main"/></span><br/>
+
+    <h1 style="display: inline-block;">Бострикова Дарья Константиновна</h1><br/>
+    <span>Группа: P3201</span><br/>
+    <span>Вариант: 201072</span><br/>
+    <br/>
+
+    <span>время:</span><br/>
+    <span class="clock"><span id="clockHours"/> : <span id="clockMinutes"/> : <span id="clockSeconds"/></span>
+    <br/> <br/>
+    <span id="count"/>
+    <script type="text/javascript">
+        const backgrounds = [
+            '#{resource["catmeme/meme(1).jpg"]}',
+            '#{resource["catmeme/meme(2).jpg"]}',
+            '#{resource["catmeme/meme(3).jpg"]}',
+            '#{resource["catmeme/meme(4).jpg"]}',
+            '#{resource["catmeme/meme(5).jpg"]}',
+            '#{resource["catmeme/meme(6).jpg"]}',
+            '#{resource["catmeme/meme(7).jpg"]}',
+            '#{resource["catmeme/meme(8).jpg"]}',
+            '#{resource["catmeme/meme(9).jpg"]}',
+            '#{resource["catmeme/meme(10).jpg"]}',
+            '#{resource["catmeme/meme(11).jpg"]}',
+            '#{resource["catmeme/meme(12).jpg"]}',
+            '#{resource["catmeme/meme(13).jpg"]}',
+            '#{resource["catmeme/meme(14).jpg"]}',
+            '#{resource["catmeme/meme(15).jpg"]}',
+            '#{resource["catmeme/meme(16).jpg"]}',
+            '#{resource["catmeme/meme(17).jpg"]}',
+            '#{resource["catmeme/meme(18).jpg"]}',
+            '#{resource["catmeme/meme(19).jpg"]}',
+            '#{resource["catmeme/meme(20).jpg"]}',
+            '#{resource["catmeme/meme(21).jpg"]}',
+            '#{resource["catmeme/meme(22).jpg"]}',
+            '#{resource["catmeme/meme(23).jpg"]}',
+            '#{resource["catmeme/meme(24).jpg"]}',
+            '#{resource["catmeme/meme(25).jpg"]}',
+            '#{resource["catmeme/meme(26).jpg"]}',
+            '#{resource["catmeme/meme(27).jpg"]}',
+            '#{resource["catmeme/meme(28).jpg"]}',
+            '#{resource["catmeme/meme(29).jpg"]}',
+            '#{resource["catmeme/meme(30).jpg"]}',
+            '#{resource["catmeme/meme(31).jpg"]}',
+            '#{resource["catmeme/meme(32).jpg"]}',
+            '#{resource["catmeme/meme(33).jpg"]}',
+            '#{resource["catmeme/meme(34).jpg"]}',
+            '#{resource["catmeme/meme(35).jpg"]}',
+            '#{resource["catmeme/meme(36).jpg"]}',
+            '#{resource["catmeme/meme(37).jpg"]}',
+            '#{resource["catmeme/meme(38).jpg"]}',
+            '#{resource["catmeme/meme(39).jpg"]}',
+            '#{resource["catmeme/meme(40).jpg"]}',
+            '#{resource["catmeme/meme(41).jpg"]}',
+            '#{resource["catmeme/meme(42).jpg"]}',
+            '#{resource["catmeme/meme(43).jpg"]}',
+            '#{resource["catmeme/meme(44).jpg"]}',
+            '#{resource["catmeme/meme(45).jpg"]}',
+            '#{resource["catmeme/meme(46).jpg"]}',
+            '#{resource["catmeme/meme(47).jpg"]}',
+            '#{resource["catmeme/meme(48).jpg"]}',
+            '#{resource["catmeme/meme(49).jpg"]}',
+            '#{resource["catmeme/meme(50).jpg"]}'
+        ];
+
+        function randomBackground() {
+            document.body.style.backgroundImage = `url("\${backgrounds[Math.floor(Math.random() * 49) + 1]}")`;
+            document.body.style.backgroundSize = `\${Math.random() * 160 + 80}px \${Math.random() * 160 + 80}px`;
+            document.body.style.backgroundPosition = `\${Math.random() * 100 - 50}px \${Math.random() * 100 - 50}px`;
+            setTimeout(randomBackground, 13000);
+        }
+
+        document.body.onload = () => randomBackground();
+    </script>
+    <h:outputScript library="js" name="timer.js"/>
+</h:body>
+</html>

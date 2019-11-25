@@ -1,0 +1,602 @@
+@font-face {
+    font-family: Lobster;
+    font-weight: normal;
+    src: url('#{resource["Lobster Regular.ttf"]}');
+}
+
+body {
+
+    background-image: url("../img/pervert.jpg");
+    background-repeat: repeat;
+    font-family: "Courier New", monospace;
+    font-size: smaller;
+}
+
+.head-text {
+    visibility: hidden;
+}
+
+.text {
+    transform: scale(-1, 1) rotate(-89deg);
+}
+
+#graph {
+    transform: rotate(63deg) scale(-1, -1);
+}
+
+.main_table {
+    width: 100%;
+}
+
+.main_table > tr > td, .main_table > tbody > tr > td {
+    text-align: center;
+}
+
+.control {
+    border-collapse: collapse;
+}
+
+.control > tr > td, .control > tbody > tr > td {
+    margin: 10%;
+    border: 15px solid transparent;
+    text-align: center;
+}
+
+.graph-view {
+    width: 500px;
+    margin: 0 20px;
+}
+
+.amazing-checkbox {
+    display: inline-block;
+    border: none;
+    position: relative;
+}
+
+.amazing-checkbox > label {
+    display: inline-block;
+}
+
+.amazing-checkbox > label > input {
+    display: inline-block;
+    width: 37px;
+    height: 19px;
+    margin: 0;
+    opacity: 0;
+}
+
+.amazing-checkbox > label > span {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    line-height: 25px;
+    text-align: center;
+    pointer-events: none;
+    transform: scale(1, -1) rotate(-37deg);
+}
+
+.amazing-checkbox > label > input:checked ~ span {
+    background: url('../img/paw.png') center/contain no-repeat;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+
+}
+
+.panel_r {
+    white-space: nowrap;
+
+}
+
+.panel_r input {
+    font-family: "Courier New", monospace;
+}
+
+.submit-btn {
+    width: 150px;
+    height: 150px;
+    border: 2px solid cadetblue;
+    border-radius: 100px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    background: linear-gradient(to bottom, #6fd662, #b31e64);
+    font-family: "Comic Sans MS", cursive;
+    font-size: larger;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform: rotate(52deg) scale(-1, -1);
+}
+
+.submit-btn:hover {
+    border-color: darkcyan;
+}
+
+.submit-btn:active {
+    background: linear-gradient(to bottom, #212bb3, #d6a13b);
+}
+
+.header {
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+}
+
+.header, .header * {
+    font-family: Lobster, Serif, serif;
+    font-size: x-large;
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#header_image {
+    pointer-events: none;
+}
+
+#graph {
+    user-select: none;
+}
+
+#result_frame {
+    width: 100%;
+    height: 0;
+    border: none;
+    user-select: none;
+    transform: scale(-1, 1);
+}
+
+#errors {
+    position: absolute;
+    top: 33%;
+    right: 9%;
+    width: 50%;
+    text-align: right;
+}
+
+#fix {
+    transform: scale(1, 1);
+    width: 175px;
+    height: 220px;
+    position: fixed;
+    bottom: -1px;
+    right: -1px;
+    background-image: url('#{resource["img/notif.png"]}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    visibility: visible;
+}
+
+#fix, #canvas, #graph, .hyperlink, .amazing-checkbox, .x-button {
+    cursor: url('../error.cur'), pointer;
+}
+
+.up-text-wrap {
+    color: #140415;
+}
+
+.up-text-wrap .up-text {
+    outline: none;
+    font-size: 1vw;
+    text-align: center;
+    font-family: "Comic Sans MS", monospace;
+    /*min-height: 10vw;*/
+    max-width: 80vw;
+    min-width: 10vw;
+    transform: scale(-1, 1);
+}
+
+.up-text-wrap .up-text,
+.up-text-wrap .up-text * {
+    animation: cray 6s infinite steps(50);
+    display: inline-block;
+}
+
+@keyframes cray {
+
+    2% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: chartreuse;
+    }
+    4% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: underline;
+        text-transform: none;
+        color: darkred;
+    }
+    6% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: capitalize;
+        color: dodgerblue;
+    }
+    8% {
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: underline;
+        text-transform: capitalize;
+        color: #ee307a;
+    }
+    10% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: underline;
+        text-transform: none;
+        color: darkred;
+    }
+    12% {
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: indigo;
+    }
+    14% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: chartreuse;
+    }
+    16% {
+        font-weight: 300;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: dodgerblue;
+    }
+    18% {
+        font-weight: 500;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: indigo;
+    }
+    20% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: darkred;
+    }
+    22% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: underline;
+        text-transform: none;
+    }
+    24% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: lowercase;
+        color: dodgerblue;
+    }
+    26% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: darkred;
+    }
+    28% {
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: chartreuse;
+    }
+    30% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: lowercase;
+    }
+    32% {
+        font-weight: 300;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: lowercase;
+        color: indigo;
+    }
+    34% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: darkred;
+    }
+    36% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+    }
+    38% {
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: underline;
+        text-transform: none;
+        color: chartreuse;
+    }
+    40% {
+        font-weight: 300;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: dodgerblue;
+    }
+    42% {
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: lowercase;
+        color: darkred;
+    }
+    44% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: indigo;
+    }
+    46% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: #ee307a;
+    }
+    48% {
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: lowercase;
+        color: chartreuse;
+    }
+    50% {
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: capitalize;
+        color: indigo;
+    }
+    52% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: none;
+        color: darkred;
+    }
+    54% {
+        font-weight: 500;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+    }
+    56% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: none;
+        color: chartreuse;
+    }
+    58% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: dodgerblue;
+    }
+    60% {
+        font-weight: 700;
+        font-style: italic;
+        text-decoration: none;
+        text-transform: lowercase;
+    }
+    62% {
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: indigo;
+    }
+    64% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: none;
+        color: #ee307a;
+    }
+    66% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: capitalize;
+    }
+    68% {
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: underline;
+        text-transform: none;
+        color: chartreuse;
+    }
+    70% {
+        font-weight: 600;
+        font-style: italic;
+        text-decoration: underline;
+        text-transform: none;
+        color: dodgerblue;
+    }
+    72% {
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: none;
+        color: darkred;
+    }
+    74% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: indigo;
+    }
+    76% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: uppercase;
+        color: #ee307a;
+    }
+    78% {
+        font-weight: 700;
+        font-style: italic;
+        text-decoration: underline;
+        text-transform: none;
+        color: indigo;
+    }
+    80% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: chartreuse;
+    }
+    82% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: indigo;
+    }
+    84% {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: uppercase;
+        color: dodgerblue;
+    }
+    86% {
+        font-weight: 600;
+        font-style: italic;
+        text-decoration: line-through;
+        text-transform: none;
+        color: indigo;
+    }
+    88% {
+        font-weight: 300;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: #ee307a;
+    }
+    90% {
+        font-weight: 500;
+        font-style: normal;
+        text-decoration: line-through;
+        text-transform: none;
+        color: darkred;
+    }
+    92% {
+        font-weight: 200;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: indigo;
+    }
+    94% {
+        font-weight: 400;
+        font-style: italic;
+        text-decoration: line-through;
+        text-transform: none;
+        color: chartreuse;
+    }
+    96% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        color: #ee307a;
+    }
+    98% {
+        font-weight: 100;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: dodgerblue;
+    }
+}
+
+#r-panel{
+    margin-bottom: 8%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#y-panel{
+    margin-bottom: 8%;
+}
+
+#graph{
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.hyperlink {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.x-button {
+    margin: 1%;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    border: 1px solid cadetblue;
+    background: linear-gradient(to top, #5022d6, #b3243c);
+    font-family: "Courier New", cursive;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.x-button:active {
+    background: linear-gradient(to top, rgba(234, 223, 31, 0.82), #53d655);
+}
+
+#main {
+    display: inline-block;
+    margin-left:  19%;
+    margin-right: 19%;
+}
+
+#y-input{
+    margin: 1%;
+}
+
+#panel{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 13%;
+    margin-right: 13%;
+}
+
+#x-panel{
+    margin-left: 7%;
+    margin-right: 7%;
+}
+

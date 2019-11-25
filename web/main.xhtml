@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF8"/>
+
+    <title>лапка</title>
+    <link type="text/css" id="styles" rel="stylesheet" href='#{resource["stylesheets/normal.css"]}'/>
+    <!--    <h:outputStylesheet id="styles" library="stylesheets" name="normal.css" />-->
+
+    <script type="text/javascript">
+        const meows = [
+            new Audio('#{resource["meows/meow.ogg"]}'),
+            new Audio('#{resource["meows/meow.mp3"]}'),
+            new Audio('#{resource["meows/meow (1).mp3"]}'),
+            new Audio('#{resource["meows/meow (2).mp3"]}'),
+            new Audio('#{resource["meows/meow (3).mp3"]}'),
+            new Audio('#{resource["meows/meow (4).mp3"]}'),
+            new Audio('#{resource["meows/meow (5).mp3"]}'),
+            new Audio('#{resource["meows/meow (6).mp3"]}'),
+            new Audio('#{resource["meows/meow (7).mp3"]}'),
+            new Audio('#{resource["meows/meow (8).mp3"]}'),
+            new Audio('#{resource["meows/meow (9).mp3"]}'),
+            new Audio('#{resource["meows/meow (10).mp3"]}'),
+            new Audio('#{resource["meows/meow (11).mp3"]}'),
+            new Audio('#{resource["meows/meow (12).mp3"]}'),
+            new Audio('#{resource["meows/meow (13).mp3"]}'),
+            new Audio('#{resource["meows/meow (14).mp3"]}'),
+            new Audio('#{resource["meows/meow (15).mp3"]}'),
+            new Audio('#{resource["meows/meow (16).mp3"]}'),
+            new Audio('#{resource["meows/meow (17).mp3"]}'),
+            new Audio('#{resource["meows/meow (18).mp3"]}'),
+            new Audio('#{resource["meows/meow (19).mp3"]}'),
+            new Audio('#{resource["meows/meow (20).mp3"]}'),
+            new Audio('#{resource["meows/meow (21).mp3"]}'),
+            new Audio('#{resource["meows/meow (22).mp3"]}'),
+            new Audio('#{resource["meows/meow (23).mp3"]}'),
+            new Audio('#{resource["meows/meow (24).mp3"]}'),
+            new Audio('#{resource["meows/meow (25).mp3"]}'),
+            new Audio('#{resource["meows/meow (26).mp3"]}'),
+            new Audio('#{resource["meows/meow (27).mp3"]}'),
+            new Audio('#{resource["meows/meow (1).wav"]}'),
+            new Audio('#{resource["meows/meow (2).wav"]}'),
+            new Audio('#{resource["meows/meow (3).wav"]}'),
+            new Audio('#{resource["meows/meow (4).wav"]}'),
+            new Audio('#{resource["meows/meow (5).wav"]}'),
+            new Audio('#{resource["meows/meow (6).wav"]}'),
+            new Audio('#{resource["meows/meow (7).wav"]}')
+        ];
+
+        const error = new Audio('#{resource["meows/error.mp3"]}');
+    </script>
+</h:head>
+
+<h:body>
+    <h:link styleClass="hyperlink" value="вернуться к часам" outcome="index"/>
+    <div id="main">
+        <div class="up-text-wrap">
+            <label class="up-text">
+                Введи координаты точки и параметр R, чтобы узнать принадлежит ли она области графика.
+                Но будь осторожен! Если точка окажется вне графика этот милый котик упадёт.
+            </label>
+        </div>
+
+        <div class="header">
+            <h:graphicImage id="cat-image" height="530" library="img"
+                            name="#{queryBean.hasErrorMessage ? 'cat.jpg' : 'not-fallen.jpg'}"/>
+
+            <div id="errors"><h:outputText id="errors-text" value="#{queryBean.errorMessage}"/></div>
+        </div>
+
+        <h:form prependId="false">
+            <div id="x-panel">
+                <h:outputLabel value="Координата Х:"/>
+
+                <h:inputHidden immediate="true" value="#{queryBean.x}"/>
+
+                #{""}
+
+                <ui:repeat value="#{queryBean.availableX}" var="x">
+                    <h:commandButton onclick="randomPlay()" styleClass="x-button#{x.equals(queryBean.x) ? ' x-button-selected' : ''}"
+                                     value="#{x}" action="#{queryBean.xAction(x)}">
+                        <f:ajax execute="@form" immediate="true" render="@form" onevent="redrawGraphView"/>
+                    </h:commandButton>
+                </ui:repeat>
+            </div>
+
+            <div id="panel">
+                <div id="y-panel">
+                    <h:outputLabel value="Координата Y: "/><br/>
+
+                    <h:inputText id="y-input" value="#{queryBean.y}"/>
+                </div>
+
+                <div id="r-panel">
+                    <label>Параметр R:</label><br/>
+
+                    <ui:repeat value="#{queryBean.availableR}" var="r">
+                        <div class="amazing-checkbox">
+                            <label>
+                                <h:selectBooleanCheckbox immediate="true" value="#{queryBean.r[r]}" onchange="clickR(#{r})"/>
+                                <span>#{r}</span>
+                            </label>
+                        </div>
+                    </ui:repeat>
+                </div>
+
+                <h:commandButton onclick="randomPlay()" id="sbmt" styleClass="submit-btn" value="проверить" action="#{queryBean.mainAction}">
+                    <f:ajax execute="@form" render="@form :cat-image :errors-text" onevent="reloadPoints"/>
+                </h:commandButton>
+            </div>
+
+            <h:inputText style="display: none" id="x-input"  value="#{queryBean.alternativeX}"/>
+
+            <span id="history-json" style="display: none;">
+                [
+
+                <ui:repeat value="#{historyBean.queries}" var="query" varStatus="status">
+                    {"x": "#{query.x}", "y": "#{query.y}", "r": "#{query.r}", "result": #{query.result}}
+
+                    <h:outputText rendered="#{!status.last}" value=","/>
+                </ui:repeat>
+
+                ]
+            </span>
+
+            <canvas id="graph" width="500" height="500"/>
+
+            <h:dataTable styleClass="history-table" rendered="#{not empty historyBean.queries}"
+                         value="#{historyBean.queriesDescending}" var="query">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+
+                    #{query.x}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+
+                    #{query.y}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+
+                    #{query.r}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">вывод</f:facet>
+
+                    #{query.result ? "жизнь продолжается" : "смысл жизни не найден"}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </div>
+
+    <h:outputScript library="js" name="script.js"/>
+
+    <script type="text/javascript">
+        function reloadPoints() {
+            points = JSON.parse(document.getElementById("history-json").innerText);
+
+            redrawGraphView();
+        }
+
+        document.body.onload = () => reloadPoints();
+    </script>
+</h:body>
+</html>

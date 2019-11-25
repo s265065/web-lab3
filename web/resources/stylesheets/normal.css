@@ -1,0 +1,238 @@
+@font-face {
+    font-family: Lobster;
+    font-weight: normal;
+    src: url('#{resource["Lobster Regular.ttf"]}');
+}
+
+body {
+    background-color: #4dcbcc;
+    font-family: "Courier New", monospace;
+    font-size: smaller;
+}
+
+.main_table {
+    width: 100%;
+}
+
+.main_table > tr > td, .main_table > tbody > tr > td {
+    text-align: center;
+}
+
+.control {
+    border-collapse: collapse;
+}
+
+.control > tr > td, .control > tbody > tr > td {
+    margin: 10%;
+    border: 15px solid transparent;
+    text-align: center;
+}
+
+.graph-view {
+    cursor: pointer;
+    width: 500px;
+    margin: 0 20px;
+}
+
+.amazing-checkbox {
+    display: inline-block;
+    border: medium dotted black;
+    position: relative;
+}
+
+.amazing-checkbox > label {
+    display: inline-block;
+}
+
+.amazing-checkbox > label > input {
+    display: inline-block;
+    width: 26px;
+    height: 22px;
+    margin: 0;
+    opacity: 0;
+    cursor: url('#{resource["Paw.cur"]}'), pointer;
+}
+
+.amazing-checkbox > label > span {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    line-height: 25px;
+    text-align: center;
+    pointer-events: none;
+    cursor: url('#{resource["Paw.cur"]}'), pointer;
+}
+
+.amazing-checkbox > label > input:checked ~ span {
+    background: url('#{resource["img/paw.png"]}') center/contain no-repeat;
+}
+
+.panel-r {
+    white-space: nowrap;
+
+}
+
+.panel-r input {
+    font-family: "Courier New", monospace;
+}
+
+.submit-btn {
+    cursor: url('#{resource["Paw.cur"]}'), pointer;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    padding: 0;
+    margin: 0;
+    border: 2px solid cadetblue;
+    outline: none;
+    background: linear-gradient(to bottom, #74d6d6, #34b3b3);
+    font-family: "Comic Sans MS", cursive;
+    font-size: larger;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.submit-btn:hover {
+    border-color: darkcyan;
+
+}
+
+.submit-btn:active {
+    background: linear-gradient(to bottom, #34b3b3, #74d6d6);
+}
+
+.header {
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+}
+
+.header, .header * {
+    font-family: Lobster, Serif, serif;
+    font-size: x-large;
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#cat-image {
+    pointer-events: none;
+}
+
+#graph {
+    user-select: none;
+}
+
+#result_frame {
+    width: 100%;
+    height: 0;
+    border: none;
+    user-select: none;
+}
+
+#errors {
+    position: absolute;
+    top: 33%;
+    right: 9%;
+    width: 50%;
+    text-align: right;
+}
+
+input.x-button-selected {
+    font-weight: bold;
+    color: navy;
+}
+
+.up-text {
+    font-size: larger;
+}
+
+#fix {
+    width: 175px;
+    height: 220px;
+    position: fixed;
+    bottom: -1px;
+    right: -1px;
+    background-image: url('#{resource["img/notif.png"]}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
+.clock {
+    font-family: Lobster, Serif, serif;
+    font-size: x-large;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#graph {
+    cursor: url('#{resource["Paw.cur"]}'), auto;
+}
+
+.hyperlink {
+    cursor: url('#{resource["Paw.cur"]}'), pointer;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.x-button {
+    cursor: url('#{resource["Paw.cur"]}'), pointer;
+    margin: 1%;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    border: 1px solid cadetblue;
+    outline: none;
+    background: linear-gradient(to top, #74d6d6, #34b3b3);
+    font-family: "Courier New", cursive;
+}
+
+.x-button:active {
+    background: linear-gradient(to top, #34b3b3, #74d6d6);
+}
+
+#main {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#panel {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+table.history-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: larger;
+}
+
+table.history-table th, table.history-table td {
+    padding: 0.5ex 1ch;
+    border: 1px solid midnightblue;
+    white-space: nowrap;
+    text-align: center;
+}
+
+table.history-table td {
+    border-top: none;
+    border-bottom: none;
+}
+
+table.history-table tr:first-child th {
+    border-top: none;
+}
+
+table.history-table th:first-child, table.history-table td:first-child {
+    border-left: none;
+}
+
+table.history-table th:last-child, table.history-table td:last-child {
+    border-right: none;
+}
